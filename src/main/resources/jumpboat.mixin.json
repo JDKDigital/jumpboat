@@ -1,0 +1,13 @@
+{
+    "required": true,
+    "package": "cy.jdkdigital.jumpboat.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "client": [
+        "MixinBoatEntity"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "refmap": "jumpboat.mixin-refmap.json",
+    "minVersion": "0.8"
+}
