@@ -19,7 +19,6 @@ apply plugin: 'idea'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-
 version = "${version}"
 group = 'cy.jdkdigital.jumpboat'
 archivesBaseName = 'jumpboat'
@@ -37,13 +36,10 @@ minecraft {
     // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-
             workingDirectory project.file('run')
             arg "-mixin.config=jumpboat.mixin.json"
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 jumpboat {
@@ -54,8 +50,9 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=jumpboat.mixin.json"
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 jumpboat {
@@ -66,8 +63,9 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=jumpboat.mixin.json"
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'jumpboat', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
@@ -92,10 +90,13 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${forgeversion}"
+    if (System.getProperty("idea.sync.active") != "true") {
+        annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
+    }
 }
 
 mixin {
-    add sourceSets.main, "jumpboat.mixin-refmap.json"
+    add sourceSets.main, "jumpboat.refmap.json"
 }
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {

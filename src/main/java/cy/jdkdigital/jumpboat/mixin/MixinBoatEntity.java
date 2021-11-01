@@ -14,6 +14,7 @@ public abstract class MixinBoatEntity extends Entity implements IJumpingMount
 {
     @Shadow
     private BoatEntity.Status status;
+
     private boolean hasJumpedFromWater;
 
     protected MixinBoatEntity(EntityType<?> type, World level) {
