@@ -30,14 +30,14 @@ compileJava {
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
     mappings channel: 'official', version: '1.16.5'
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
             workingDirectory project.file('run')
-            arg "-mixin.config=jumpboat.mixin.json"
+            arg "-mixin.config=jumpboat.mixins.json"
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
@@ -50,7 +50,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            arg "-mixin.config=jumpboat.mixin.json"
+            arg "-mixin.config=jumpboat.mixins.json"
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
@@ -63,7 +63,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            arg "-mixin.config=jumpboat.mixin.json"
+            arg "-mixin.config=jumpboat.mixins.json"
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
@@ -90,14 +90,13 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${forgeversion}"
-    if (System.getProperty("idea.sync.active") != "true") {
-        annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
-    }
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
 
 mixin {
     add sourceSets.main, "jumpboat.refmap.json"
 }
+
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
@@ -111,7 +110,7 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
                 "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
                 "TweakOrder": 0,
-                "MixinConfigs" : "jumpboat.mixin.json"
+                "MixinConfigs" : "jumpboat.mixins.json"
         ])
     }
 }

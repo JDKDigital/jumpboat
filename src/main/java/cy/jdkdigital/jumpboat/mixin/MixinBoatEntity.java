@@ -26,7 +26,7 @@ public abstract class MixinBoatEntity extends Entity implements IJumpingMount
         if (this.status == BoatEntity.Status.IN_WATER) {
             this.setDeltaMovement(this.getDeltaMovement().add(0, .3, 0));
             this.hasJumpedFromWater = true;
-        } else {
+        } else if (this.status == BoatEntity.Status.ON_LAND) {
             this.setDeltaMovement(this.getDeltaMovement().add(0, .25, 0));
         }
     }
