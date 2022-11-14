@@ -1,3 +1,8 @@
-0.1.0.3
+0.1.0.5
 
-- 1.18.1 support
+- Updated to Forge 41.0.98
+
+
+0.1.0.4
+
+- 1.19 support

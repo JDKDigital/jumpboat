@@ -1,5 +1,7 @@
 package cy.jdkdigital.jumpboat.mixin;
 
+import cy.jdkdigital.jumpboat.Config;
+import cy.jdkdigital.jumpboat.JumpBoat;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -21,12 +23,12 @@ public abstract class MixinBoat extends Entity implements PlayerRideableJumping
     }
 
     @Override
-    public void onPlayerJump(int p_110206_1_) {
+    public void onPlayerJump(int boostLevel) {
         if (this.status == Boat.Status.IN_WATER) {
-            this.setDeltaMovement(this.getDeltaMovement().add(0, .3, 0));
+            this.setDeltaMovement(this.getDeltaMovement().add(0, Config.GENERAL.jumpHeightInWater.get() * boostLevel / 100, 0));
             this.hasJumpedFromWater = true;
         } else if (this.status == Boat.Status.ON_LAND) {
-            this.setDeltaMovement(this.getDeltaMovement().add(0, .25, 0));
+            this.setDeltaMovement(this.getDeltaMovement().add(0, Config.GENERAL.jumpHeightOnLand.get() * boostLevel / 100, 0));
         }
     }
 
