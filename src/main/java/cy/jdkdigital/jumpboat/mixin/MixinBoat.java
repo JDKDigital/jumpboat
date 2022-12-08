@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PlayerRideableJumping;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,7 +34,7 @@ public abstract class MixinBoat extends Entity implements PlayerRideableJumping
     }
 
     @Override
-    public boolean canJump() {
+    public boolean canJump(Player player) {
         return true;
     }
 
