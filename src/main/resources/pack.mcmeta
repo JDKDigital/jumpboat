@@ -1,7 +1,8 @@
 {
     "pack": {
         "description": "jumpboat resources",
-        "pack_format": 8,
-        "_comment": ""
+        "pack_format": 12,
+        "forge:resource_pack_format": 12,
+        "forge:data_pack_format": 10
     }
 }

@@ -34,7 +34,7 @@ public abstract class MixinBoat extends Entity implements PlayerRideableJumping
     }
 
     @Override
-    public boolean canJump(Player player) {
+    public boolean canJump() {
         return true;
     }
 
