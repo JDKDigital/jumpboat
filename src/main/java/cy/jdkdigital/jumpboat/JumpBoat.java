@@ -8,6 +8,6 @@ import net.minecraftforge.fml.config.ModConfig;
 public class JumpBoat
 {
     public JumpBoat() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG);
     }
 }
