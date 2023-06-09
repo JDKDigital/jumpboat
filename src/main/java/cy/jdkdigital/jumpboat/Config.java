@@ -21,11 +21,11 @@ public class Config {
 
             jumpHeightInWater = builder
                     .comment("Jump height modifier when in water.")
-                    .defineInRange("jumpHeightInWater", .3, 0, Integer.MAX_VALUE);
+                    .defineInRange("jumpHeightInWater", .4, 0, Integer.MAX_VALUE);
 
             jumpHeightOnLand = builder
                     .comment("Jump height modifier when on land.")
-                    .defineInRange("jumpHeightOnLand", .25, 0, Integer.MAX_VALUE);
+                    .defineInRange("jumpHeightOnLand", .3, 0, Integer.MAX_VALUE);
 
             builder.pop();
         }
