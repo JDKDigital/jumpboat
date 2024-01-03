@@ -1,12 +1,10 @@
 package cy.jdkdigital.jumpboat.mixin;
 
 import cy.jdkdigital.jumpboat.Config;
-import cy.jdkdigital.jumpboat.JumpBoat;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PlayerRideableJumping;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +13,7 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(value = Boat.class)
 public abstract class MixinBoat extends Entity implements PlayerRideableJumping
 {
-    @Shadow
+    @Shadow(remap = false)
     private Boat.Status status;
     private boolean hasJumpedFromWater;
 

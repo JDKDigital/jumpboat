@@ -1,10 +1,10 @@
 package cy.jdkdigital.jumpboat;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class Config {
-    private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-    public static final ForgeConfigSpec CONFIG;
+    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public static final ModConfigSpec CONFIG;
     public static final General GENERAL = new General(BUILDER);
 
     static {
@@ -13,10 +13,10 @@ public class Config {
 
     public static class General
     {
-        public final ForgeConfigSpec.DoubleValue jumpHeightInWater;
-        public final ForgeConfigSpec.DoubleValue jumpHeightOnLand;
+        public final ModConfigSpec.DoubleValue jumpHeightInWater;
+        public final ModConfigSpec.DoubleValue jumpHeightOnLand;
 
-        public General(ForgeConfigSpec.Builder builder) {
+        public General(ModConfigSpec.Builder builder) {
             builder.push("Common");
 
             jumpHeightInWater = builder
