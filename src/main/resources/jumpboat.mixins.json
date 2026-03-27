@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "cy.jdkdigital.jumpboat.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "MixinAbstractBoat"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
